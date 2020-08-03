@@ -13,8 +13,9 @@ private:
 	string fName;
 	int damage;
 	int structStrength;
+	Fighter* m_pNext;
 public:
-	Fighter(string name, int dmg, int stStrength)
+	Fighter(string name, int dmg, int stStrength) :m_pNext(NULL)
 	{
 		fName = name;
 		damage = dmg;
@@ -57,7 +58,7 @@ private:
 	string name;
 	int maxBays;
 	int numFighters;
-	int head;
+	Fighter* head;
 	Fighter* bayList[];
 public:
 	Carrier(int maxBays, string name)
