@@ -13,19 +13,22 @@ private:
 	string fName;
 	int damage;
 	int structStrength;
-	Fighter* m_pNext;
+	
 public:
-	Fighter(string name, int dmg, int stStrength) :m_pNext(NULL)
+	
+	Fighter(string name, int dmg, int stStrength)
 	{
+		
 		fName = name;
 		damage = dmg;
 		structStrength = stStrength;
+		
 	}
 	void reduceStructure(int damage) 
 	{
 		structStrength -= damage;
 	}
-	string geFName()
+	string getFName()
 	{
 		return fName;
 	}
@@ -58,48 +61,84 @@ private:
 	string name;
 	int maxBays;
 	int numFighters;
-	Fighter* head;
-	Fighter* bayList[];
+	int tail;
+	int top;
+	Fighter* bayList[100];
 public:
-	Carrier(int maxBays, string name)
+	Carrier(int max, string name)
 	{
-		this->maxBays = maxBays;
-		bayList[maxBays];
-		numFighters = -1;
-		head = nullptr;
+		this->name = name;
+		numFighters = 0;
+		tail = top = -1;
+		this->maxBays = max;
+		
+		//bayList[max];
 	}
 
 	bool loadFighter(Fighter* f)
 	{
-	
+		if (numFighters == maxBays)
+			return false;
+		
+		if (top == -1)
+		{
+			top = tail = 0;
+			bayList[tail] = new Fighter("dd", 13, 13);
 
+		}
+		else
+		{
+			tail = (tail + 1) % maxBays;
+			bayList[tail] = f;
+		}
 		++numFighters;
-		bayList[numFighters] = f;
+		return true;
 		
-		
-		return false;
 	}
 	Fighter* launchNextFighter()
 	{
-		if (!hasFighters)
-		{
-			head++;
-			return bayList[head];
-		}
 		
-		return;
+	
+		Fighter* curr = nullptr;
+		if (hasFighters())
+		{
+			curr = bayList[top];
+		
+			if (top == tail)
+			{
+				
+				top = tail = -1;
+			}
+			else
+			{
+				
+				
+				top = (top + 1) % maxBays;
+				
+			}
+			--numFighters;
+		}
+		else
+		{
+			cout << "Empty" << endl;
+			
+		}
+		return curr;
 	}
 	string getInfo()
 	{
-		return;
+		string s = "  ";
+		return s;
 	}
 	bool hasFighters() {
 		
-		if (numFighters != -1)
+		if (numFighters != 0)
 			return true;
+
 		return false;
 	}
-
+	
+	
 	int getCapacity() {	return maxBays;	}
 
 	int getNumFighters(){ return numFighters; }
@@ -112,7 +151,6 @@ public:
 
 int main()
 {
-
 
 	return 0;
 }
