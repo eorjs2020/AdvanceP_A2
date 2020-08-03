@@ -159,11 +159,12 @@ void battle(Carrier* a, Carrier* b)
 	int roll, rollfirst, damageroll, turn;
 	turn = 0;
 	
-	while (tempc1->hasFighters() || tempc2->hasFighters()) {
+	while (tempc1->hasFighters() && tempc2->hasFighters()) 
+	{
 		system("cls");
 		tempf1 = tempc1->launchNextFighter();
 		tempf2 = tempc2->launchNextFighter();
-		while (tempf1->getStructStrength() > 0 || tempf2->getStructStrength() > 0)
+		while (tempf1->getStructStrength() > 0 && tempf2->getStructStrength() > 0)
 		{
 			roll = damageroll = rollfirst = 0;
 			cout << "Turn: " << turn << endl;
@@ -199,20 +200,20 @@ void battle(Carrier* a, Carrier* b)
 			}
 			++turn;
 		}
-		system("pause");
+		
 		if (tempf1->getStructStrength() > 0){
 			tempc1->loadFighter(tempf1);
 		}
 		else{
-			cout << "BOOOOOMMMM " << tempf1 << " destroyed!!!!!" << endl ; 
+			cout << "BOOOOOMMMM " << tempf1->getFName() << " destroyed!!!!!" << endl ; 
 		}
 		if (tempf2->getStructStrength() > 0){	
 			tempc2->loadFighter(tempf2);
 		}
 		else {
-			cout << "BOOOOOMMMM " << tempf2 << " destroyed!!!!!" << endl;
+			cout << "BOOOOOMMMM " << tempf2->getFName() << " destroyed!!!!!" << endl;
 		}
-
+		system("pause");
 	}
 	if (tempc1->hasFighters())	{
 		cout << tempc1->getName() << " wins the battle " << endl;
