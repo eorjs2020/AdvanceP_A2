@@ -57,25 +57,31 @@ private:
 	string name;
 	int maxBays;
 	int numFighters;
+	int head;
 	Fighter* bayList[];
 public:
-	Carrier(int maxBays, int numFighters)
+	Carrier(int maxBays, string name)
 	{
-		this->numFighters = numFighters;
 		this->maxBays = maxBays;
 		bayList[maxBays];
+		numFighters = -1;
+		head = -1;
 	}
 
 	bool loadFighter(Fighter* f)
 	{
-		if (numFighters < maxBays)
-			return true;
-
-		
+		++numFighters;
+		bayList[numFighters] = f;
 		return false;
 	}
 	Fighter* launchNextFighter()
 	{
+		if (!hasFighters)
+		{
+			head++;
+			return bayList[head];
+		}
+		
 		return;
 	}
 	string getInfo()
@@ -84,9 +90,8 @@ public:
 	}
 	bool hasFighters() {
 		
-		if (numFighters != 0)
+		if (numFighters != -1)
 			return true;
-
 		return false;
 	}
 
