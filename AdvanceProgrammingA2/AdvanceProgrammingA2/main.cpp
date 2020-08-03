@@ -66,13 +66,17 @@ public:
 		this->maxBays = maxBays;
 		bayList[maxBays];
 		numFighters = -1;
-		head = -1;
+		head = nullptr;
 	}
 
 	bool loadFighter(Fighter* f)
 	{
+	
+
 		++numFighters;
 		bayList[numFighters] = f;
+		
+		
 		return false;
 	}
 	Fighter* launchNextFighter()
