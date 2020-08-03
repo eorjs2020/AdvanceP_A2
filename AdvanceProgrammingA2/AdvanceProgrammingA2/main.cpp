@@ -9,7 +9,46 @@ using namespace std;
 
 class Fighter
 {
-	
+private:
+	string fName;
+	int damage;
+	int structStrength;
+public:
+	Fighter(string name, int dmg, int stStrength)
+	{
+		fName = name;
+		damage = dmg;
+		structStrength = stStrength;
+	}
+	void reduceStructure(int damage) 
+	{
+		structStrength -= damage;
+	}
+	string geFName()
+	{
+		return fName;
+	}
+
+	int	getStructStrength()
+	{
+		return structStrength;
+	}
+
+	int getDamage()
+	{
+		return damage;
+	}
+	string getInfo() 
+	{
+		ostringstream ss;
+		ss << "Fighter name        : " << fName << "\n";
+		ss << "Structural strength : " << structStrength << "\n";
+		ss << "Damage              :" << damage << "\n" << "\n";
+		return ss.str();
+	}
+
+
+
 };
 
 class Carrier
@@ -27,20 +66,29 @@ public:
 		bayList[maxBays];
 	}
 
-	void loadFighter(Fighter* f)
+	bool loadFighter(Fighter* f)
 	{
 		if (numFighters < maxBays)
-			return;
-	}
-	void launchNextFighter()
-	{
+			return true;
 
+		
+		return false;
 	}
-	void getInfo()
+	Fighter* launchNextFighter()
 	{
-
+		return;
 	}
-	bool hasFighters() { return; }
+	string getInfo()
+	{
+		return;
+	}
+	bool hasFighters() {
+		
+		if (numFighters != 0)
+			return true;
+
+		return false;
+	}
 
 	int getCapacity() {	return maxBays;	}
 
