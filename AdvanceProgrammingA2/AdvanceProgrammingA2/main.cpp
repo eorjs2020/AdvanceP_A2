@@ -1,10 +1,15 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<string>
+#include<cstdlib>
+#include<ctime>
+#include<sstream>
+#include<fstream>
+
 using namespace std;
 
 class Fighter
 {
-
+	
 };
 
 class Carrier
@@ -13,8 +18,15 @@ private:
 	string name;
 	int maxBays;
 	int numFighters;
-	vector<Fighter*> bayList;
+	Fighter* bayList[];
 public:
+	Carrier(int maxBays, int numFighters)
+	{
+		this->numFighters = numFighters;
+		this->maxBays = maxBays;
+		bayList[maxBays];
+	}
+
 	void loadFighter(Fighter* f)
 	{
 		if (numFighters < maxBays)
