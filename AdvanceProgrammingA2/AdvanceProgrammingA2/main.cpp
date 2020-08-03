@@ -153,7 +153,7 @@ public:
 
 void battle(Carrier* a, Carrier* b)
 {
-	srand((unsigned)time(0));
+	
 	Fighter* tempf1, * tempf2, *first, *second;
 	Carrier* tempc1 = a, * tempc2 = b;
 	int roll, rollfirst, damageroll, turn;
@@ -225,6 +225,7 @@ void battle(Carrier* a, Carrier* b)
 
 int main()
 {
+	srand((unsigned)time(0));
 	Carrier* c1,* c2;
 	Fighter* ftemp;
 	std::ifstream in;
@@ -238,14 +239,14 @@ int main()
 		in >> name;
 		in.ignore();
 		in >> m;
-		in.ignore();
+		//in.ignore();
 		in >> n; 
 		c1 = new Carrier(m, name);
 		for (int x = 0; x < n; ++x) {
 			in >> name;
 			in.ignore();
 			in >> m;
-			in.ignore();
+			
 			in >> n;
 			ftemp = new Fighter(name, m, n);
 			c1->loadFighter(ftemp);
@@ -255,7 +256,7 @@ int main()
 			in >> name;
 			in.ignore();
 			in >> m;
-			in.ignore();
+			
 			in >> n;
 			ftemp = new Fighter(name, m, n);
 			c2->loadFighter(ftemp);
