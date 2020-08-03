@@ -87,7 +87,13 @@ public:
 	}
 	string getInfo()
 	{
-		return;
+		ostringstream ss;
+		ss << "Carrier name: " << name << "\n";
+		for (int i = 0; i < numFighters; i++)
+		{
+			ss << bayList[i]->getInfo();
+		}
+		return ss.str();
 	}
 	bool hasFighters() {
 		
