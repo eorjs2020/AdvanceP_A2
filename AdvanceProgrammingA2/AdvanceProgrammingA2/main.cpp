@@ -248,7 +248,7 @@ int main()
 		in >> m;
 			
 		in >> n1;
-		ftemp = new Fighter(name, m, n1);
+		ftemp = new Fighter(name, n1, m);
 		c1->loadFighter(ftemp);
 	}
 	in >> name;
@@ -263,7 +263,7 @@ int main()
 		in >> m;
 			
 		in >> n1;
-		ftemp = new Fighter(name, m, n1);
+		ftemp = new Fighter(name, n1, m);
 		c2->loadFighter(ftemp);
 	}
 	
