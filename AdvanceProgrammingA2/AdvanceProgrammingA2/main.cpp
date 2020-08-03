@@ -108,7 +108,47 @@ public:
 
 int main()
 {
+	Carrier* c1,* c2;
+	Fighter* ftemp;
+	std::ifstream in;
+	int m, n;
+	std::string name;
+	in.open("shipData.txt");
+	if (!in.is_open()) {
+		std::cout << "Error";
+	}
+	for (int i = 0; i < 2; i++) {
+		in >> name;
+		in.ignore();
+		in >> m;
+		in.ignore();
+		in >> n; 
+		c1 = new Carrier(m, name);
+		for (int x = 0; x < n; ++x) {
+			in >> name;
+			in.ignore();
+			in >> m;
+			in.ignore();
+			in >> n;
+			ftemp = new Fighter(name, m, n);
+			c1->loadFighter(ftemp);
+		}
+		c2 = new Carrier(m, name);
+		for (int x = 0; x < n; ++x) {
+			in >> name;
+			in.ignore();
+			in >> m;
+			in.ignore();
+			in >> n;
+			ftemp = new Fighter(name, m, n);
+			c2->loadFighter(ftemp);
+		}
+	}
+	in.close();
+	
 
+	c1->getInfo();
+	c2->getInfo();
 
 	return 0;
 }
