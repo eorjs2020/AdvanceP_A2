@@ -83,7 +83,7 @@ public:
 		if (top == -1)
 		{
 			top = tail = 0;
-			bayList[tail] = new Fighter("dd", 13, 13);
+			bayList[tail] = f;
 
 		}
 		else
@@ -157,6 +157,7 @@ void battle(Carrier* a, Carrier* b)
 	Fighter* tempf1, * tempf2, *first, *second;
 	Carrier* tempc1 = a, * tempc2 = b;
 	int roll, rollfirst, damageroll, turn;
+	turn = 0;
 	
 	while (tempc1->hasFighters() || tempc2->hasFighters()) {
 		system("cls");
@@ -164,6 +165,7 @@ void battle(Carrier* a, Carrier* b)
 		tempf2 = tempc2->launchNextFighter();
 		while (tempf1->getStructStrength() > 0 || tempf2->getStructStrength() > 0)
 		{
+			roll = damageroll = rollfirst = 0;
 			cout << "Turn: " << turn << endl;
 			rollfirst = rand() % 2 + 1;
 			if(rollfirst){
@@ -178,10 +180,10 @@ void battle(Carrier* a, Carrier* b)
 			if (roll >= 50) {		
 				damageroll = rand() % first->getDamage() + 1;
 				second->reduceStructure(damageroll);
-				cout << first->geFName() << " hits " << second->geFName() << " for " << damageroll << endl;
+				cout << first->getFName() << " hits " << second->getFName() << " for " << damageroll << endl;
 			}
 			else {
-				cout << first->geFName() << " misses " << second->geFName() << endl;
+				cout << first->getFName() << " misses " << second->getFName() << endl;
 			}
 			roll = rand() % 100 + 1;
 			if (second->getStructStrength() <= 0 ){
@@ -190,10 +192,10 @@ void battle(Carrier* a, Carrier* b)
 			if (roll >= 50) {	
 				damageroll = rand() % second->getDamage() + 1;
 				first->reduceStructure(damageroll);
-				cout << second->geFName() << " hits " << first->geFName() << " for " << damageroll << endl;
+				cout << second->getFName() << " hits " << first->getFName() << " for " << damageroll << endl;
 			}
 			else {
-				cout << second->geFName() << " misses " << first->geFName() << endl;
+				cout << second->getFName() << " misses " << first->getFName() << endl;
 			}
 			++turn;
 		}
