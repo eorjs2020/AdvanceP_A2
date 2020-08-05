@@ -48,7 +48,7 @@ public:
 		m_pNumFighters = 0;
 		m_pTail = m_pTop = -1;
 		this->m_pMaxBays = max;
-		//bayList[max];
+		//m_pBayList[m_pMaxBays];
 	}
 	bool loadFighter(Fighter* f) {
 		if (m_pNumFighters == m_pMaxBays)
