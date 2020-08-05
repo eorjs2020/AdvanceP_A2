@@ -1,6 +1,7 @@
 //Michael Shular 101273089
 //Daekoen Lee 101076401
-
+//Aug 5. 2020 
+//Advance Programming Assignment 2
 #include<iostream>
 #include<string>
 #include<cstdlib>
@@ -89,7 +90,7 @@ public:
 		for (int i = 0; i < m_pNumFighters; i++) {
 			ss << m_pBayList[i]->getInfo();
 		}
-		return ss1.str();
+		return ss.str();
 	}
 	bool hasFighters() {	
 		if (m_pNumFighters != 0)
