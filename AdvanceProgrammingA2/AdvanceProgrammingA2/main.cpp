@@ -7,6 +7,7 @@
 #include<ctime>
 #include<sstream>
 #include<fstream>
+#include <string>
 
 using namespace std;
 
@@ -88,7 +89,7 @@ public:
 		for (int i = 0; i < m_pNumFighters; i++) {
 			ss << m_pBayList[i]->getInfo();
 		}
-		return ss.str();
+		return ss1.str();
 	}
 	bool hasFighters() {	
 		if (m_pNumFighters != 0)
